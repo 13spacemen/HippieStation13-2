@@ -92,7 +92,7 @@
 		SSlighting.changed_lights |= src
 
 //Remove current effect
-/datum/light_source/proc/remove_effect().
+/datum/light_source/proc/remove_effect()
 	for(var/turf/T in effect)
 		LAZYREMOVE(T.affecting_lights, src)
 		T.update_lumcount(-effect[T], mode)
@@ -212,18 +212,18 @@
 	. = ..()
 	if (T.lighting_object == src)
 		T.lighting_object = null
-	
+
 /atom/movable/light/New()
 	if (!isturf(loc))
 		PutOut()
 		throw EXCEPTION("Invalid light placement: loc must be a turf")
 	var/turf/T = loc
-	
+
 	if (T.lighting_object && T.lighting_object != src)
 		PutOut()
 		throw EXCEPTION("BUG: /atom/movable/light created on a turf that already has one")
 	T.lighting_object = src
-	
+
 /atom/movable/light/proc/PutOut()
 	alpha = 0
 	qdel(src, force = TRUE)

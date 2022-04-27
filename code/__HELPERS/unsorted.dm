@@ -481,10 +481,6 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	var/y = min(world.maxy, max(1, A.y + dy))
 	return locate(x,y,A.z)
 
-/proc/arctan(x)
-	var/y=arcsin(x/sqrt(1+x*x))
-	return y
-
 /atom/proc/GetAllContents()
 	var/list/processing_list = list(src)
 	var/list/assembled = list()
@@ -1371,7 +1367,7 @@ var/valid_HTTPSGet = FALSE
 			\______(_______;;; __;;;
 		*/
 	var/temp_file = "HTTPSGetOutput.txt"
-	var/command 
+	var/command
 	if(world.system_type == MS_WINDOWS)
 		command = "powershell -Command \"wget [url] -OutFile [temp_file]\""
 	else if(world.system_type == UNIX)
